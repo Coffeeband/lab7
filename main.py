@@ -2,8 +2,10 @@ import asyncio
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 
-# У реальному проекті токен береться з .env
-API_TOKEN = '123'
+
+
+API_TOKEN = 'YOUR_BOT_TOKEN_HERE'
+
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
@@ -18,3 +20,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
