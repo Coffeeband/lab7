@@ -1,20 +1,39 @@
-import asyncio
-from aiogram import Bot, Dispatcher, types
-from aiogram.filters import Command
+import logging
+import time
+import random
 
-# У реальному проекті токен береться з .env
-API_TOKEN = '123'
+# 1. Налаштування логування (Частина 2, пункт 1-2)
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
-bot = Bot(token=API_TOKEN)
-dp = Dispatcher()
 
-@dp.message(Command("start"))
-async def cmd_start(message: types.Message):
-    await message.answer("Привіт фрілансер, готовий робити роботу?")
+def search_projects():
+    # Логування основної дії (Частина 2, пункт 2)
+    logger.info("SmartHunt: Пошук нових проєктів на біржах...")
+    time.sleep(1)
 
-async def main():
-    print("Бот працює...")
-    await dp.start_polling(bot)
+    # Імітація знахідки
+    if random.choice([True, False]):
+        logger.info("Знайдено новий проєкт: 'Розробка Telegram-бота'")
+    else:
+        logger.warning("Наразі нових проєктів не знайдено.")
+
+
+def main():
+    # Повідомлення про запуск (Частина 2, пункт 2)
+    logger.info("Програма SmartHunt запущена (Release v1.0)")
+
+    try:
+        search_projects()
+    except Exception as e:
+        # Логування помилки (Частина 2, пункт 2)
+        logger.error(f"Виникла помилка: {e}")
+    finally:
+        logger.info("Програма завершила роботу.")
+
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
